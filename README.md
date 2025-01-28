@@ -223,9 +223,9 @@ when I did it.
         #dir.create(save_path_minimap)
          dir.create(save_path_canu)
          dir.create(save_path_canu_commands)
-        #minimap2<-"/dartfs/rc/lab/A/AckermanLab/CMV/PostRot/cmv/miniconda3/envs/medaka/bin/minimap2"
+        #minimap2<-"path_to_minimap2"
         #pbsapply(valid_files[[i]], function(x){
-        #minimap2_args<-c("/dartfs-hpc/rc/home/3/f005f43/trust4/TRUST4/mouse/GRCm38_bcrtcr.fa","-x","splice","-c",x,"-o",
+        #minimap2_args<-c("path_to_trust4/trust4/TRUST4/mouse/GRCm38_bcrtcr.fa","-x","splice","-c",x,"-o",
         #                 paste0(save_path_minimap, file_path_sans_ext(basename(x)),".paf"))
         #processx::run(minimap2, minimap2_args, echo_cmd =FALSE, echo = FALSE, spinner = FALSE)
         #})
@@ -271,7 +271,7 @@ They don’t ask how, they ask how many. Or something.
 
 # Canu Post-Processing
 
-      files<-list.files(path="/dartfs/rc/lab/A/AckermanLab/CMV/PostRot/RAGE-Seq_RDS/TCR_outs/canu_outs", full.names = TRUE)
+      files<-list.files(path="../canu_outs", full.names = TRUE)
       files<-lapply(files, function(x){list.files(path = x, full.names = TRUE, recursive = FALSE)})
       files<-lapply(files, function(x){list.files(path = x, full.names = TRUE, recursive = FALSE)})
       assembled_files<-lapply(seq_along(files), function(x){files[[x]][which(grepl(pattern = ".contigs.fasta", x = files[[x]]))]})
